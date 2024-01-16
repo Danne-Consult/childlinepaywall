@@ -73,3 +73,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.formbx .mpesa{
+    width:200px;
+}
