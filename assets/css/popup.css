@@ -75,5 +75,7 @@
 }
 
 .formbx .mpesa{
-    width:200px;
+    width: 200px;
+    display: inline;
+    vertical-align: middle;
 }
