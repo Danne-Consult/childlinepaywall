@@ -26,10 +26,10 @@ function newval($fileval, $transamt){
     
 }
 
-$file = fopen("mpesaamount.txt", "r") or die("Unable to open file!");
-$newval = newval($file, $transamount);
-fwrite($file, $newval);
-fclose($file);
+$fileamount = fopen("mpesaamount.txt", "r") or die("Unable to open file!");
+$newval = newval($fileamount, $transamount);
+fwrite($fileamount, $newval);
+fclose($fileamount);
 
 file_put_contents('transaction_log.txt', $rec, FILE_APPEND);
 file_put_contents('log.txt', $content, FILE_APPEND);

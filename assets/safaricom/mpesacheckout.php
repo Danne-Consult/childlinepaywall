@@ -81,7 +81,7 @@ $password = base64_encode($Business_Code . $Passkey . $Time_Stamp);
         $requestid = $curl_Tranfer2_response->CheckoutRequestID;
         
         if($result === "0"){
-          echo $result ."/n" . $requestid;
+          echo $result ."\n" . $requestid;
           
         }
         
