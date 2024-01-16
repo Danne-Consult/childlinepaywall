@@ -74,8 +74,7 @@ $password = base64_encode($Business_Code . $Passkey . $Time_Stamp);
         
         curl_close($curl_Tranfer2);
         
-        var_dump($curl_Tranfer2_response);
-        
+        var_dump($curl_Tranfer2_post_data);
         
         $result = $curl_Tranfer2_response->ResponseCode; 
         $requestid = $curl_Tranfer2_response->CheckoutRequestID;
