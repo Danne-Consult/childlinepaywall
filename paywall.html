@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paywall</title>
+    <link rel="stylesheet" href="assets/css/popup.css">
+</head>
+<body>
+    <div id="myModal" class="modal">
+    <div class="modalcontent">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <div class="formbx">
+            <h2>Be a <span>1 bob Hero</span></h2>
+            <p>Join hands with other kenyans to donate one shilling only to help Childline fight for children facing child abuse.</p>
+            <form method="post" action="assets/safaricom/mpesacheckout.php">
+                <input type="text" placeholder="Name" name="xname"><br />
+                <input type="email" placeholder="Email (optional)" name="xemail"><br />
+                <input type="tel" placeholder="Phone Number" name="xtelno"><br />
+                <input type="number" placeholder="Amount: Ksh." name="xdonation"><br />
+                <br />
+                <input type="submit" value="Donate Now!" class="submit" />
+            </form>
+            <p>Paybill: <b>1160116</b> | Account No: <b>HERO [Your Name]</b></p>
+        </div>
+        <div class="imgbx">
+            <img src="assets/images/child1.png" alt="Children">
+        </div>
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var modal = document.getElementById("myModal");
+
+            // Show the modal when the page loads
+            modal.style.display = "block";
+
+            var closeModalBtn = document.getElementById("closeModalBtn");
+
+            closeModalBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>
