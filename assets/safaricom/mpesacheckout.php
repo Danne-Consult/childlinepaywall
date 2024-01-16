@@ -31,7 +31,7 @@ $password = base64_encode($Business_Code . $Passkey . $Time_Stamp);
         $donation = $_POST['xdonation'];
         
         $donationref = "HERO ". $donorname;
-        $tpltype = "1 Bob Hero";
+        $trandesc = "1 Bob Hero";
 
         $curl_Tranfer = curl_init();
         curl_setopt($curl_Tranfer, CURLOPT_URL, $Token_URL);
@@ -50,7 +50,7 @@ $password = base64_encode($Business_Code . $Passkey . $Time_Stamp);
 
         $curl_Tranfer2_post_data = [
             'BusinessShortCode' => $Business_Code,
-            'Password' => $password,
+            'SecurityCredential' => $password,
             'Timestamp' =>$Time_Stamp,
             'TransactionType' =>$Type_of_Transaction,
             'Amount' => $donoramount,
@@ -59,7 +59,7 @@ $password = base64_encode($Business_Code . $Passkey . $Time_Stamp);
             'PhoneNumber' => $donorphone,
             'CallBackURL' => $CallBackURL,
             'AccountReference' => $donationref,
-            'TransactionDesc' => $tpltype
+            'TransactionDesc' => $trandesc
         ];
 
         $data2_string = json_encode($curl_Tranfer2_post_data);
