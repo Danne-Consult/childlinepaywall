@@ -11,27 +11,16 @@ $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
 $Type_of_Transaction = 'CustomerPayBillOnline';
 $Token_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
 $OnlinePayment = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
-$CallBackURL = 'https://danneconsult.com/client/cv-builder/controller/payreceiver.php';
+$CallBackURL = 'https://danneconsult.com/client/childlinepaywall/mpesapayreceiver.php';
 $Time_Stamp = date("Ymdhis");
 $password = base64_encode($Business_Code . $Passkey . $Time_Stamp);
 
 /*End  configurations*/
 
+    if(isset($_POST["mpesasubmit"])){
 
-    if(isset($_POST["submitcode"])){
-        if (!isset($_POST["mpesacode"])) {
-            header("location: ../invoice.php?error=Please re-enter your Mpesa Code");
-            exit();
-        }
-
-        $mpesacode = $_POST["mpesacode"];
-        
-        
-    }
-    if(isset($_POST["submitnumber"])){
-
-        if (!isset($_POST["phonenumer"])) {
-            header("location: ../invoice.php?error=Please re-enter your number");
+        if (!isset($_POST["xtelno"])) {
+            header("location: ../../paywall.html?error=Please re-enter your number");
             exit();
         }
         
