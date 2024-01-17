@@ -83,7 +83,5 @@ $password = base64_encode($Business_Code . $Passkey . $Time_Stamp);
           echo $result ."\n" . $requestid;
           
         }
-        
-
     }
 
