@@ -14,10 +14,10 @@
             <h2>Be a <span>1 bob Hero</span></h2>
             <p>Join hands with other kenyans to donate one shilling only to help Childline fight for children facing child abuse.</p>
             <form method="post" action="assets/safaricom/mpesacheckout.php">
-                <input type="text" placeholder="Name" name="xname"><br />
+                <input type="text" placeholder="Name" name="xname" required><br />
                 <input type="email" placeholder="Email (optional)" name="xemail"><br />
-                <input type="tel" placeholder="Phone Number: 254..." name="xtelno"><br />
-                <input type="number" placeholder="Amount: Ksh." name="xdonation"><br />
+                <input type="tel" placeholder="Phone Number: 254..." name="xtelno" required><br />
+                <input type="number" placeholder="Amount: Ksh." name="xdonation" required><br />
                 <br />
                 <input type="submit" value="Donate Now!" class="submit" name="mpesasubmit" /> &nbsp;&nbsp; <img src="assets/images/mpesa_img.jpg" class="mpesa" alt="MPesa">
             </form>
