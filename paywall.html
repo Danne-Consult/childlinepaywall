@@ -5,31 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paywall</title>
     <link rel="stylesheet" href="assets/css/popup.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="myModal" class="modal">
     <div class="modalcontent">
         <span class="close" id="closeModalBtn">&times;</span>
+        <div class="progress"><img src="assets/images/progress.gif" alt=""></div>
         <div class="formbx">
             <h2>Be a <span>1 bob Hero</span></h2>
             <p>Join hands with other kenyans to donate one shilling only to help Childline fight for children facing child abuse.</p>
-            <form method="post" action="assets/safaricom/mpesacheckout.php">
-                <input type="text" placeholder="Name" name="xname" required><br />
-                <input type="email" placeholder="Email (optional)" name="xemail"><br />
-                <input type="tel" placeholder="Phone Number: 254..." name="xtelno" required><br />
-                <input type="number" placeholder="Amount: Ksh." name="xdonation" required><br />
+            <form id="donatenow">
+                <input type="text" placeholder="Name" id="xname" name="xname" required><br />
+                <input type="email" placeholder="Email (optional)" id="xemail" name="xemail"><br />
+                <input type="tel" placeholder="Phone Number: 254..." id="xtelno"  name="xtelno" required><br />
+                <input type="number" placeholder="Amount: Ksh." id="xdonation" name="xdonation" required><br />
                 <br />
-                <input type="submit" value="Donate Now!" class="submit" name="mpesasubmit" /> &nbsp;&nbsp; <img src="assets/images/mpesa_img.jpg" class="mpesa" alt="MPesa">
+                <input type="submit" value="Donate Now!" class="submit" id="donatesubmit" name="mpesasubmit" /> &nbsp;&nbsp; <img src="assets/images/mpesa_img.jpg" class="mpesa" alt="MPesa">
             </form>
             <p>Paybill: <b>1160116</b> | Account No: <b>HERO [Your Name]</b></p>
-        </div>
-        <div class="imgbx">
-            <img src="assets/images/child1.png" alt="Children">
         </div>
     </div>
     </div>
 
     <script>
+
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        function generateString(length) {
+            let result = '';
+            const charactersLength = characters.length;
+            for ( let i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+
+            return result;
+        }
+
+        var randomnum = generateString(5);
+
         document.addEventListener("DOMContentLoaded", function() {
             var modal = document.getElementById("myModal");
 
@@ -48,6 +61,37 @@
                 }
             }
         });
+
+        $(document).ready(function () {
+
+            $("#donatenow").submit(function(e) {
+                e.preventDefault();
+
+                var formData = {
+                    xrandomnum: randomnum,
+                    xname: $("#xname").val(),
+                    xemail: $("#xemail").val(),
+                    xtelno: $("#xtelno").val(),
+                    xdonation: $("#xdonation").val()
+                };
+
+                console.log(formData);
+                $(".progress").css("display","grid");
+
+                $.ajax({
+                type: "POST",
+                url: "assets/safaricom/mpesacheckout.php",
+                data: formData,
+                dataType: "json"
+                }).done(function(result) {
+                    console.log(result);
+                });
+
+                
+            });
+        });
+
+
     </script>
     
 </body>

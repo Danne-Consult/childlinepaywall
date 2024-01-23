@@ -2,11 +2,24 @@
 date_default_timezone_set("Africa/Nairobi");
 header("Content-Type:application/json");
 
-if(file_get_contents('php://input')){
-    
+$content1 = file_get_contents('php://input');
+
+$x = fopen("donations/".$dontationid."-try.json", "a");
+    fwrite($x,$content1);   
+    fclose($x);
+
+
+/*if(isset($_GET['ref'])){
+
+    $dontationid = $_GET['ref'];
     $content = file_get_contents('php://input');
+
+    $h = fopen("donations/".$dontationid."-payment.json", "a");
+    fwrite($h,$content);   
+    fclose($h);
+
     $res = json_decode($content);
-    
+
     $resultcode = $res->Body->stkCallback->ResultCode;
     $checkoutrequestID = $res->Body->stkCallback->CheckoutRequestID;
     $transamount = $res->Body->stkCallback->CallbackMetadata->Item[0]->Value;
@@ -30,5 +43,5 @@ if(file_get_contents('php://input')){
         echo "Error: The value in the text document is not a valid number.";
     }
     
-}
+}*/
 ?>
